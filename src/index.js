@@ -218,9 +218,88 @@ headerMiddlerWrapper.appendChild(governmentLogo)
 headerMiddle.appendChild(headerMiddlerWrapper)
 header.appendChild(headerMiddle)
 
+//bottom header
+const headerBottom = document.createElement("div")
+headerBottom.style.width = "100%"
+headerBottom.style.background = "#163269"
+headerBottom.className = " mt-1 py-2"
+
+//create header bottom nav
+const headerBottomNav = document.createElement("nav")
+headerBottomNav.className = "w-75 mx-auto d-flex justify-content-between align-items-center"
+
+//create ul and btn
+const headerBottomNavUl = document.createElement("ul")
+headerBottomNavUl.style.listStyle = "none"
+headerBottomNavUl.className = "d-flex gap-3 m-0"
+//create array for navs
+const headerBottomNavUlLiList = ["Home", "About Us", "CETs", "CAP", "Downloads", "Statics", "Online System", "Event", "Contact"]
 
 
+headerBottomNavUlLiList.forEach(function (ele) {
+    const headerBottomNavUlLi = document.createElement("li")
+    const headerBottomNavUlLiAtag = document.createElement("a")
+    headerBottomNavUlLiAtag.href = "#"
+    headerBottomNavUlLiAtag.innerText = ele
+    headerBottomNavUlLiAtag.className = "text-decoration-none text-white"
+    headerBottomNavUlLi.appendChild(headerBottomNavUlLiAtag)
+    headerBottomNavUl.appendChild(headerBottomNavUlLi)
 
+})
+
+//create a btn to nav
+const headerBottomNavBtn = document.createElement("button")
+headerBottomNavBtn.type = "button"
+headerBottomNavBtn.innerText = "Ask Pragati"
+headerBottomNavBtn.className = "text-white p-1 px-2 rounded-2"
+headerBottomNavBtn.style.border = "1px solid #808080"
+headerBottomNavBtn.style.background = "#01205D"
+
+//create a img to btn
+const headerBottomNavBtnImg = document.createElement("img")
+headerBottomNavBtnImg.src = "../img/Ask-Pragati-9.png"
+headerBottomNavBtnImg.alt = ""
+headerBottomNavBtnImg.width = "35"
+
+headerBottomNavBtn.appendChild(headerBottomNavBtnImg)
+headerBottom.appendChild(headerBottomNav)
+headerBottomNav.appendChild(headerBottomNavUl)
+headerBottomNav.appendChild(headerBottomNavBtn)
+header.appendChild(headerBottom)
+
+
+//create a main tag
+const main = document.createElement("main")
+
+//notice
+const mainNotice = document.createElement("section")
+mainNotice.className = "container my-2 d-flex gap-2"
+const mainNoticeAnnoucementBtn = document.createElement("button")
+mainNoticeAnnoucementBtn.innerText = "Announcement"
+mainNoticeAnnoucementBtn.style.background = "#EEC641"
+mainNoticeAnnoucementBtn.className = "btn text-white fw-bold"
+
+//create marquee tag
+const mainNoticeMarquee = document.createElement("marquee")
+mainNoticeMarquee.innerHTML = "Imp Notice: Dates have been Extended for various courses of CET registration for A.Y 2023-24 (English/Marathi)"
+mainNoticeMarquee.style.background = "#F1F1F1"
+mainNoticeMarquee.behavior = ""
+mainNoticeMarquee.direction = ""
+mainNoticeMarquee.style.lineHeight = "2.3"
+mainNoticeMarquee.className = "m-0 p-0"
+
+//create new keyword to pop inifinte
+const newInfinite = document.createElement("span")
+newInfinite.innerText = "New"
+newInfinite.style.background = "red"
+newInfinite.className = "p-1"
+mainNoticeMarquee.appendChild(newInfinite)
+
+// mainNoticeMarquee.innerText += "New"
+main.appendChild(mainNotice)
+mainNotice.appendChild(mainNoticeAnnoucementBtn)
+mainNotice.appendChild(mainNoticeMarquee)
+root.appendChild(main)
 ///last 
 const bundleScript = document.createElement("script")
 bundleScript.src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

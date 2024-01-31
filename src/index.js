@@ -300,6 +300,89 @@ main.appendChild(mainNotice)
 mainNotice.appendChild(mainNoticeAnnoucementBtn)
 mainNotice.appendChild(mainNoticeMarquee)
 root.appendChild(main)
+
+
+//banner 
+const banner = document.createElement("div")
+banner.style.width = "100%"
+banner.style.height = "400px"
+banner.style.display = "flex"
+
+
+//create banner left
+const bannerLeft = document.createElement("div")
+bannerLeft.style.flex = 1
+bannerLeft.style.height = "100%"
+bannerLeft.style.background = "green"
+bannerLeft.style.background = "url(../img/GOVERNMENT-OF-MAHARASHTRA-22-1.png)"
+bannerLeft.style.backgroundRepeat = "no-repeat"
+bannerLeft.style.backgroundSize = "cover"
+bannerLeft.className = "position-relative"
+
+//
+//create banner right
+const bannerRight = document.createElement("div")
+bannerRight.style.flex = "0.35"
+bannerRight.style.height = "100%"
+bannerRight.style.position = "relative"
+// bannerRight.style.background = "rgb(22,50,105)"
+bannerRight.style.background = "linear-gradient(180deg, rgba(22,50,105,0.8) 10%, rgba(238,198,65,1) 100%)"
+
+
+//create fix background img
+const fixedBackgroundBannerRightImg = document.createElement("div")
+fixedBackgroundBannerRightImg.style.background = "url(../img/MicrosoftTeams-image-scaled.jpg)"
+fixedBackgroundBannerRightImg.style.width = "100%"
+fixedBackgroundBannerRightImg.style.height = "100%"
+fixedBackgroundBannerRightImg.style.height = "50%"
+fixedBackgroundBannerRightImg.style.backgroundSize = "cover"
+fixedBackgroundBannerRightImg.style.backgroundPositionX = "-1000px"
+fixedBackgroundBannerRightImg.style.zIndex = "-1"
+
+fixedBackgroundBannerRightImg.style.position = "fixed"
+
+bannerRight.appendChild(fixedBackgroundBannerRightImg)
+//create number of department and courses
+const bannerLeftCourseNumbers = document.createElement("div")
+bannerLeftCourseNumbers.className = "row m-0  position-absolute"
+bannerLeftCourseNumbers.style.background = "#EEC641"
+bannerLeftCourseNumbers.style.bottom = "-84px"
+bannerLeftCourseNumbers.style.width = "100%"
+
+function CardNumber(title, descriptionText, background) {
+    const card = document.createElement("div")
+    card.className = "col-12 col-lg-4 text-center text-white  py-2 "
+
+    if (background) {
+        card.style.background = background
+    }
+
+    //create num
+    const titleH5 = document.createElement("h5")
+    titleH5.innerText = title
+    titleH5.style.fontSize = "30px"
+
+    //create description
+    const description = document.createElement("p")
+    description.className = "m-0"
+    description.innerText = descriptionText
+
+    //appending child
+    card.appendChild(titleH5)
+    card.appendChild(description)
+    //returned card
+    return card
+}
+
+bannerLeftCourseNumbers.appendChild(CardNumber(6, "Number of Departments"))
+bannerLeftCourseNumbers.appendChild(CardNumber(19, "Number of CETs", "#163269"))
+bannerLeftCourseNumbers.appendChild(CardNumber(61, "Number of Courses"))
+
+
+bannerLeft.appendChild(bannerLeftCourseNumbers)
+banner.appendChild(bannerLeft)
+banner.appendChild(bannerRight)
+main.appendChild(banner)
 ///last 
 const bundleScript = document.createElement("script")
 bundleScript.src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

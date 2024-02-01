@@ -311,7 +311,7 @@ banner.style.display = "flex"
 
 //create banner left
 const bannerLeft = document.createElement("div")
-bannerLeft.style.flex = 1
+bannerLeft.style.width = "75%"
 bannerLeft.style.height = "100%"
 bannerLeft.style.background = "green"
 bannerLeft.style.background = "url(../img/GOVERNMENT-OF-MAHARASHTRA-22-1.png)"
@@ -319,29 +319,6 @@ bannerLeft.style.backgroundRepeat = "no-repeat"
 bannerLeft.style.backgroundSize = "cover"
 bannerLeft.className = "position-relative"
 
-//
-//create banner right
-const bannerRight = document.createElement("div")
-bannerRight.style.flex = "0.35"
-bannerRight.style.height = "100%"
-bannerRight.style.position = "relative"
-// bannerRight.style.background = "rgb(22,50,105)"
-bannerRight.style.background = "linear-gradient(180deg, rgba(22,50,105,0.8) 10%, rgba(238,198,65,1) 100%)"
-
-
-//create fix background img
-const fixedBackgroundBannerRightImg = document.createElement("div")
-fixedBackgroundBannerRightImg.style.background = "url(../img/MicrosoftTeams-image-scaled.jpg)"
-fixedBackgroundBannerRightImg.style.width = "100%"
-fixedBackgroundBannerRightImg.style.height = "100%"
-fixedBackgroundBannerRightImg.style.height = "50%"
-fixedBackgroundBannerRightImg.style.backgroundSize = "cover"
-fixedBackgroundBannerRightImg.style.backgroundPositionX = "-1000px"
-fixedBackgroundBannerRightImg.style.zIndex = "-1"
-
-fixedBackgroundBannerRightImg.style.position = "fixed"
-
-bannerRight.appendChild(fixedBackgroundBannerRightImg)
 //create number of department and courses
 const bannerLeftCourseNumbers = document.createElement("div")
 bannerLeftCourseNumbers.className = "row m-0  position-absolute"
@@ -349,9 +326,9 @@ bannerLeftCourseNumbers.style.background = "#EEC641"
 bannerLeftCourseNumbers.style.bottom = "-84px"
 bannerLeftCourseNumbers.style.width = "100%"
 
-function CardNumber(title, descriptionText, background) {
+function CardNumber(title, descriptionText, background, columns) {
     const card = document.createElement("div")
-    card.className = "col-12 col-lg-4 text-center text-white  py-2 "
+    card.className = `col-12 col-lg-${columns || 4} text-center text-white  py-2 `
 
     if (background) {
         card.style.background = background
@@ -378,11 +355,93 @@ bannerLeftCourseNumbers.appendChild(CardNumber(6, "Number of Departments"))
 bannerLeftCourseNumbers.appendChild(CardNumber(19, "Number of CETs", "#163269"))
 bannerLeftCourseNumbers.appendChild(CardNumber(61, "Number of Courses"))
 
+//
+//create banner right
+const bannerRight = document.createElement("div")
+bannerRight.style.width = "25%"
+bannerRight.style.height = "100%"
+bannerRight.className = "p-3"
+bannerRight.style.position = "relative"
+// bannerRight.style.background = "rgb(22,50,105)"
+bannerRight.style.background = "linear-gradient(180deg, rgba(22,50,105,0.8) 10%, rgba(238,198,65,1) 100%)"
+
+//create a function to right card 
+function IconTitleCard(icon, titleString, background) {
+    let card = document.createElement("div")
+    card.className = "d-flex align-items-center gap-3 p-2 text-white mt-2"
+    let leftBox = document.createElement("div")
+    leftBox.style.width = "70px"
+    leftBox.style.height = "70px"
+    leftBox.className = "bg-white rounded-pill d-flex  align-items-center justify-content-center"
+    //create one more div to icon background
+    const subdivLeft = document.createElement("div")
+    subdivLeft.style.width = "50px"
+    subdivLeft.style.height = "50px"
+    subdivLeft.style.background = background
+    subdivLeft.className = " rounded-pill d-flex  align-items-center justify-content-center"
+    subdivLeft.innerHTML = `<i class="fa ${icon}" style="font-size:30px;" aria-hidden="true"></i>`
+    leftBox.appendChild(subdivLeft)
+
+    let rightBox = document.createElement("div")
+    rightBox.style.flex = 1
+    //create h6
+    const title = document.createElement("h6")
+    title.style.lineHeight = "22px"
+    title.innerText = titleString
+    rightBox.appendChild(title)
+    card.appendChild(leftBox)
+    card.appendChild(rightBox)
+    return card
+}
+bannerRight.appendChild(IconTitleCard("fa-user-circle-o", "Candidate Registration A.Y 2024-25", "#0E8F52"))
+bannerRight.appendChild(IconTitleCard("fa-users", "Candidate Help Module", "#FFB859"))
+bannerRight.appendChild(IconTitleCard("fa-graduation-cap", "Foreign Candidate Registration Portal", "#163269"))
+bannerRight.appendChild(IconTitleCard("fa-id-card", "Admissions Regulating Authority (ARA) Website", "#EE6A41"))
+
+//create fix background img
+const fixedBackgroundBannerRightImg = document.createElement("div")
+fixedBackgroundBannerRightImg.style.background = "url(../img/MicrosoftTeams-image-scaled.jpg)"
+fixedBackgroundBannerRightImg.style.width = "100%"
+fixedBackgroundBannerRightImg.style.height = "100%"
+fixedBackgroundBannerRightImg.style.height = "50%"
+fixedBackgroundBannerRightImg.style.backgroundSize = "cover"
+fixedBackgroundBannerRightImg.style.backgroundPositionX = "-1000px"
+fixedBackgroundBannerRightImg.style.zIndex = "-1"
+
+
+fixedBackgroundBannerRightImg.style.position = "fixed"
+
+// bannerRight.appendChild(fixedBackgroundBannerRightImg)
+
+const bannerRightCourseNumbers = document.createElement("div")
+bannerRightCourseNumbers.className = "row mt-2 position-absolute w-100"
+bannerRightCourseNumbers.style.bottom = "-84px"
+bannerRightCourseNumbers.style.left = "12px"
+bannerRightCourseNumbers.appendChild(CardNumber(6, "Number of Departments", "#163269", 12))
 
 bannerLeft.appendChild(bannerLeftCourseNumbers)
 banner.appendChild(bannerLeft)
 banner.appendChild(bannerRight)
+bannerRight.appendChild(bannerRightCourseNumbers)
 main.appendChild(banner)
+
+let count = 0
+//counter function
+const counterNode = document.getElementById("counter")
+function counterNumber() {
+
+    if (count < 4000 - 2) {
+        count++
+        var counter = setTimeout(counterNumber, 0)
+    } else {
+        clearTimeout(counter)
+    }
+    if (counter) {
+        counterNode.innerText = counter
+    }
+}
+counterNumber()
+
 ///last 
 const bundleScript = document.createElement("script")
 bundleScript.src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

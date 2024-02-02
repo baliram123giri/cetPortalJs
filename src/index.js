@@ -336,7 +336,9 @@ function CardNumber(title, descriptionText, background, columns) {
 
     //create num
     const titleH5 = document.createElement("h5")
-    titleH5.innerText = title
+    titleH5.className = "count"
+    titleH5.setAttribute("data-count", title)
+    titleH5.innerText = 0
     titleH5.style.fontSize = "30px"
 
     //create description
@@ -417,7 +419,7 @@ const bannerRightCourseNumbers = document.createElement("div")
 bannerRightCourseNumbers.className = "row mt-2 position-absolute w-100"
 bannerRightCourseNumbers.style.bottom = "-84px"
 bannerRightCourseNumbers.style.left = "12px"
-bannerRightCourseNumbers.appendChild(CardNumber(6, "Number of Departments", "#163269", 12))
+bannerRightCourseNumbers.appendChild(CardNumber(4000, "Number of Departments", "#163269", 12))
 
 bannerLeft.appendChild(bannerLeftCourseNumbers)
 banner.appendChild(bannerLeft)
@@ -425,23 +427,26 @@ banner.appendChild(bannerRight)
 bannerRight.appendChild(bannerRightCourseNumbers)
 main.appendChild(banner)
 
-let count = 0
-//counter function
-const counterNode = document.getElementById("counter")
-function counterNumber() {
+const counts = document.querySelectorAll(".count")
 
-    if (count < 4000 - 2) {
-        count++
-        var counter = setTimeout(counterNumber, 0)
-    } else {
-        clearTimeout(counter)
-    }
-    if (counter) {
-        counterNode.innerText = counter
-    }
-}
-counterNumber()
+counts.forEach(function (counter) {
 
+    function updateCounter() {
+        const finalValue = Number(counter.getAttribute("data-count"))
+        const oldValue = Number(counter.innerText.replace(",", ""))
+        const incrementValue = finalValue / 100
+
+        if (oldValue < finalValue) {
+            counter.innerText = Math.ceil(incrementValue + oldValue).toLocaleString()
+            setTimeout(updateCounter, 1)
+        } else {
+            counter.innerText = `${finalValue > 1000 ? `${finalValue.toLocaleString()}+` : finalValue}`
+        }
+    }
+
+    updateCounter()
+
+})
 ///last 
 const bundleScript = document.createElement("script")
 bundleScript.src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

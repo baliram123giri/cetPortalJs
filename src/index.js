@@ -447,6 +447,72 @@ counts.forEach(function (counter) {
     updateCounter()
 
 })
+
+//create about section
+const aboutSection = document.createElement("div")
+aboutSection.style.background = "url(../img/aboutBg.jpg)"
+aboutSection.style.backgroundPosition = "center 0px"
+aboutSection.style.backgroundSize = "cover"
+aboutSection.style.backgroundRepeat = "no-repeat"
+aboutSection.style.height = "1500px"
+aboutSection.style.backgroundAttachment = "fixed"
+
+//create a child as abbout section overlay
+const aboutSectionOverlay = document.createElement("div")
+aboutSectionOverlay.style.background = "#ffffffbd"
+aboutSectionOverlay.style.padding = "70px 0px"
+
+//create aboutSection container
+const aboutSectionContainer = document.createElement("div")
+aboutSectionContainer.className = "w-75 mx-auto"
+aboutSectionContainer.style.marginTop = "84px"
+
+const aboutSectionContainerRow = document.createElement("div")
+aboutSectionContainerRow.className = "row"
+
+//left
+const aboutSectionContainerRowLeft = document.createElement("div")
+aboutSectionContainerRowLeft.className = "col-12 col-lg-5 "
+
+//create a img tag
+const imgDiv = document.createElement("div")
+
+imgDiv.style.borderLeft = "15px solid #163269"
+imgDiv.style.borderBottom = "15px solid #163269"
+const aboutSectionContainerRowLeftImg = document.createElement("img")
+aboutSectionContainerRowLeftImg.src = "../img/abountLeft.png"
+aboutSectionContainerRowLeftImg.alt = "abountLeft"
+aboutSectionContainerRowLeftImg.style.width = "100%"
+aboutSectionContainerRowLeftImg.style.height = "250px"
+aboutSectionContainerRowLeftImg.style.objectFit = "contain"
+aboutSectionContainerRowLeftImg.style.objectPosition = "0px 50px"
+
+imgDiv.appendChild(aboutSectionContainerRowLeftImg)
+aboutSectionContainerRowLeft.appendChild(imgDiv)
+
+//right 
+const aboutSectionContainerRowRight = document.createElement("div")
+aboutSectionContainerRowRight.className = "col-12 col-lg-7"
+
+//create heading
+const aboutSectionContainerRowRightHeading = document.createElement("h2")
+aboutSectionContainerRowRightHeading.innerText = "About CET Cell"
+aboutSectionContainerRowRightHeading.style.color = "#163269"
+const paragrph1 = document.createElement("p")
+paragrph1.innerText = "The Government of Maharashtra has established State Common Entrance Test Cell as per Section 10 of the Maharashtra Unaided Private Professional Educational Institutions (Regulation of Admissions and Fees) Act ,2015. The CET Cell conducts various entrance exams for Admission to Professional courses in the state of Maharashtra, India."
+const paragrph2 = document.createElement("p")
+paragrph2.innerText = "Its primary purpose is to facilitate the admission process for Professional courses such as Engineering, Management, Pharmacy, Agriculture, law, Medical, AYUSH & Fine Arts ."
+
+aboutSectionContainerRowRight.appendChild(aboutSectionContainerRowRightHeading)
+aboutSectionContainerRowRight.appendChild(paragrph1)
+aboutSectionContainerRowRight.appendChild(paragrph2)
+aboutSectionContainerRow.appendChild(aboutSectionContainerRowLeft)
+aboutSectionContainerRow.appendChild(aboutSectionContainerRowRight)
+aboutSectionContainer.appendChild(aboutSectionContainerRow)
+aboutSectionOverlay.appendChild(aboutSectionContainer)
+aboutSection.appendChild(aboutSectionOverlay)
+main.appendChild(aboutSection)
+
 ///last 
 const bundleScript = document.createElement("script")
 bundleScript.src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

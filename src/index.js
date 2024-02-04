@@ -511,8 +511,54 @@ aboutSectionContainerRow.appendChild(aboutSectionContainerRowRight)
 aboutSectionContainer.appendChild(aboutSectionContainerRow)
 aboutSectionOverlay.appendChild(aboutSectionContainer)
 aboutSection.appendChild(aboutSectionOverlay)
+
 main.appendChild(aboutSection)
 
+//table section
+const tableSection = document.createElement("div")
+tableSection.style.background = "#EAEAEA"
+tableSection.style.height = "400px"
+
+//create menu container
+const menuContainer = document.createElement("div")
+menuContainer.className = "w-75 mx-auto py-3"
+
+menuContainer.innerHTML = `<nav class="nav justify-content-between " style="font-size:16px">
+<button type="button" class="  px-4 py-2 bg-white border-0  b_about_btn" aria-current="page" >All</button>
+<button type="button" class=" px-4 py-2 bg-white border-0 b_about_btn" >Technical Education</button>
+<button type="button" class=" px-4 py-2 bg-white border-0 b_about_btn" >Higher Education</button>
+<button type="button" class=" px-4 py-2 bg-white border-0 b_about_btn" >Agriculture Education</button>
+<button type="button" class=" px-4 py-2 bg-white border-0 b_about_btn" >Fine Art Education</button>
+<button type="button" class=" px-4 py-2 bg-white border-0 b_about_btn" >Medical Education</button>
+<button type="button" class=" px-4 py-2 bg-white border-0 b_about_btn" >AYUSH</button>
+</nav>`
+
+
+window.onload = function () {
+    const aboutBtn = document.querySelector(".b_about_btn")
+    aboutBtn.classList.remove("bg-white")
+    aboutBtn.classList.add("bg-warning")
+}
+
+document.addEventListener("click", function (event) {
+    const isBtn = event.target.classList.contains("b_about_btn")
+    if (isBtn) {
+        const existingBtn = document.querySelectorAll(".b_about_btn")
+        existingBtn.forEach((ele) => {
+            ele.classList.add("bg-white")
+            const isExist = ele.classList.contains("bg-warning")
+            if (isExist) {
+                event.target.classList.add("bg-white")
+                ele.classList.remove("bg-warning")
+            }
+        })
+        event.target.classList.remove("bg-white")
+        event.target.classList.add("bg-warning")
+    }
+})
+
+tableSection.appendChild(menuContainer)
+aboutSection.appendChild(tableSection)
 ///last 
 const bundleScript = document.createElement("script")
 bundleScript.src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

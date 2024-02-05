@@ -559,6 +559,100 @@ document.addEventListener("click", function (event) {
 
 tableSection.appendChild(menuContainer)
 aboutSection.appendChild(tableSection)
+//create a dynamic table
+const table = document.createElement("table")
+table.style.width = "100%"
+table.className = "table  my-2 table-bordered border-dark border-end"
+const tableHead = document.createElement("thead")
+const tableHeadTr = document.createElement("tr")
+
+
+const tableBody = document.createElement("tbody")
+
+
+const tableHeadData = [{ title: "SN", width: 20 }, { title: "Course Name", width: 200 }, { title: "Subject", width: 500 }, { title: "Published Date", width: 150 }, { title: "Download", width: 50 }]
+let tableData = [
+    {
+        id: 1,
+        course: "LLB 3 Yrs",
+        subject: "Important Notice for Preparatory Passed Candidates.",
+        isNew: true,
+        date: "02/02/2024",
+        download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Important-Notices_Preperatory-CET-2024.pdf"
+    },
+    {
+        id: 2,
+        course: "All CET's",
+        subject: "User Manual Video for CET Registration A.Y. 2024-25",
+        isNew: true,
+        date: "31/01/2024",
+        download: "https://www.youtube.com/watch?v=UuJSWbIoyGQ"
+    },
+    {
+        id: 3,
+        course: "MAH- AAC (Fine Art)",
+        subject: "MAH- AAC (Fine Art) CET 2024 Online Application Notice No.1 (English/Marathi)",
+        isNew: true,
+        date: "30/01/2024",
+        download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Online-Application-Notice.pdf"
+    },
+    {
+        id: 4,
+        course: "All CET's",
+        subject: "Imp Notice: Dates have been Extended for various courses of CET registration for A.Y 2024-25 (English/Marathi)",
+        isNew: true,
+        date: "29/01/2024",
+        download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Extenstion-Notice.pdf"
+    }
+]
+
+tableHeadData.forEach(function (th) {
+    const tableHeadTrTh = document.createElement("th")
+    tableHeadTrTh.className = "bg-warning"
+    if (th.title === "SN") {
+        tableHeadTrTh.style.textAlign = "center"
+    }
+    tableHeadTrTh.innerText = th.title
+    tableHeadTrTh.style.width = `${th.width}px`
+    tableHeadTrTh.style.fontWeight = "400"
+    tableHeadTr.appendChild(tableHeadTrTh)
+})
+
+//
+tableData.forEach(function (ele) {
+    const tableBodyTr = document.createElement("tr")
+    const tableBodyTrData1 = document.createElement("td")
+    tableBodyTrData1.innerText = ele.id
+    tableBodyTrData1.style.textAlign = "center"
+    const tableBodyTrData2 = document.createElement("td")
+    tableBodyTrData2.innerText = ele.course
+    const tableBodyTrData3 = document.createElement("td")
+    tableBodyTrData3.innerText = ele.subject
+    //create new img
+    const newImg = document.createElement("img")
+    newImg.src = "../img/blinknew.gif"
+    newImg.alt = "new"
+    tableBodyTrData3.appendChild(newImg)
+    const tableBodyTrData4 = document.createElement("td")
+    tableBodyTrData4.innerText = ele.date
+    const tableBodyTrData5 = document.createElement("td")
+    tableBodyTrData5.style.textAlign = "center"
+    tableBodyTrData5.style.cursor = "pointer"
+    const openLink = `<a href="${ele.download}" target="_blank"><i class="fa fa-file-pdf-o fw-bold" aria-hidden="true"></i></a>`
+    tableBodyTrData5.innerHTML = openLink
+    tableBodyTr.appendChild(tableBodyTrData1)
+    tableBodyTr.appendChild(tableBodyTrData2)
+    tableBodyTr.appendChild(tableBodyTrData3)
+    tableBodyTr.appendChild(tableBodyTrData4)
+    tableBodyTr.appendChild(tableBodyTrData5)
+    tableBody.appendChild(tableBodyTr)
+})
+
+table.appendChild(tableHead)
+table.appendChild(tableBody)
+tableHead.appendChild(tableHeadTr)
+
+menuContainer.appendChild(table)
 ///last 
 const bundleScript = document.createElement("script")
 bundleScript.src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

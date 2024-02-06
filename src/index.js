@@ -534,15 +534,87 @@ menuContainer.innerHTML = `<nav class="nav justify-content-between " style="font
 </nav>`
 
 
+
+
 window.onload = function () {
     const aboutBtn = document.querySelector(".b_about_btn")
     aboutBtn.classList.remove("bg-white")
     aboutBtn.classList.add("bg-warning")
+    dynamicData([
+        {
+            id: 1,
+            course: "LLB 3 Yrs",
+            subject: "Important Notice for Preparatory Passed Candidates.",
+            isNew: true,
+            date: "02/02/2024",
+            download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Important-Notices_Preperatory-CET-2024.pdf"
+        },
+        {
+            id: 2,
+            course: "All CET's",
+            subject: "User Manual Video for CET Registration A.Y. 2024-25",
+            isNew: true,
+            date: "31/01/2024",
+            download: "https://www.youtube.com/watch?v=UuJSWbIoyGQ"
+        },
+        {
+            id: 3,
+            course: "MAH- AAC (Fine Art)",
+            subject: "MAH- AAC (Fine Art) CET 2024 Online Application Notice No.1 (English/Marathi)",
+            isNew: true,
+            date: "30/01/2024",
+            download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Online-Application-Notice.pdf"
+        },
+        {
+            id: 4,
+            course: "All CET's",
+            subject: "Imp Notice: Dates have been Extended for various courses of CET registration for A.Y 2024-25 (English/Marathi)",
+            isNew: true,
+            date: "29/01/2024",
+            download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Extenstion-Notice.pdf"
+        }
+    ])
+}
+//
+function dynamicData(tableAllData = []) {
+
+    tableAllData.forEach(function (ele) {
+        const tableBodyTr = document.createElement("tr")
+        const tableBodyTrData1 = document.createElement("td")
+        tableBodyTrData1.innerText = ele.id
+        tableBodyTrData1.style.textAlign = "center"
+        const tableBodyTrData2 = document.createElement("td")
+        tableBodyTrData2.innerText = ele.course
+        const tableBodyTrData3 = document.createElement("td")
+        tableBodyTrData3.innerText = ele.subject
+        //create new img
+        const newImg = document.createElement("img")
+        newImg.src = "../img/blinknew.gif"
+        newImg.alt = "new"
+        tableBodyTrData3.appendChild(newImg)
+        const tableBodyTrData4 = document.createElement("td")
+        tableBodyTrData4.innerText = ele.date
+        const tableBodyTrData5 = document.createElement("td")
+        tableBodyTrData5.style.textAlign = "center"
+        tableBodyTrData5.style.cursor = "pointer"
+        const openLink = `<a href="${ele.download}" target="_blank"><i class="fa fa-file-pdf-o fw-bold" aria-hidden="true"></i></a>`
+        tableBodyTrData5.innerHTML = openLink
+        tableBodyTr.appendChild(tableBodyTrData1)
+        tableBodyTr.appendChild(tableBodyTrData2)
+        tableBodyTr.appendChild(tableBodyTrData3)
+        tableBodyTr.appendChild(tableBodyTrData4)
+        tableBodyTr.appendChild(tableBodyTrData5)
+        tableBody.appendChild(tableBodyTr)
+    })
 }
 
 document.addEventListener("click", function (event) {
     const isBtn = event.target.classList.contains("b_about_btn")
+
     if (isBtn) {
+        const title = event.target.innerText
+
+
         const existingBtn = document.querySelectorAll(".b_about_btn")
         existingBtn.forEach((ele) => {
             ele.classList.add("bg-white")
@@ -554,6 +626,111 @@ document.addEventListener("click", function (event) {
         })
         event.target.classList.remove("bg-white")
         event.target.classList.add("bg-warning")
+        tableBody.innerHTML = ""
+
+        switch (title) {
+            case "Technical Education":
+                return dynamicData([
+                    {
+                        id: 4,
+                        course: "Baliram",
+                        subject: "Imp Notice: Dates have been Extended for various courses of CET registration for A.Y 2024-25 (English/Marathi)",
+                        isNew: true,
+                        date: "29/01/2024",
+                        download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Extenstion-Notice.pdf"
+                    }
+                ])
+            case "Higher Education":
+                return dynamicData([
+                    {
+                        id: 4,
+                        course: "Higher",
+                        subject: "Imp Notice: Dates have been Extended for various courses of CET registration for A.Y 2024-25 (English/Marathi)",
+                        isNew: true,
+                        date: "29/01/2024",
+                        download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Extenstion-Notice.pdf"
+                    }
+                ])
+            case "Agriculture Education":
+                return dynamicData([
+                    {
+                        id: 4,
+                        course: "Agriculture",
+                        subject: "Imp Notice: Dates have been Extended for various courses of CET registration for A.Y 2024-25 (English/Marathi)",
+                        isNew: true,
+                        date: "29/01/2024",
+                        download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Extenstion-Notice.pdf"
+                    }
+                ])
+            case "Fine Art Education":
+                return dynamicData([
+                    {
+                        id: 4,
+                        course: "Fine Art Education",
+                        subject: "Imp Notice: Dates have been Extended for various courses of CET registration for A.Y 2024-25 (English/Marathi)",
+                        isNew: true,
+                        date: "29/01/2024",
+                        download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Extenstion-Notice.pdf"
+                    }
+                ])
+            case "Medical Education":
+                return dynamicData([
+                    {
+                        id: 4,
+                        course: "Medical Education",
+                        subject: "Imp Notice: Dates have been Extended for various courses of CET registration for A.Y 2024-25 (English/Marathi)",
+                        isNew: true,
+                        date: "29/01/2024",
+                        download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Extenstion-Notice.pdf"
+                    }
+                ])
+            case "AYUSH":
+                return dynamicData([
+                    {
+                        id: 4,
+                        course: "AYUSH",
+                        subject: "Imp Notice: Dates have been Extended for various courses of CET registration for A.Y 2024-25 (English/Marathi)",
+                        isNew: true,
+                        date: "29/01/2024",
+                        download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Extenstion-Notice.pdf"
+                    }
+                ])
+            default:
+                return dynamicData([
+                    {
+                        id: 1,
+                        course: "LLB 3 Yrs",
+                        subject: "Important Notice for Preparatory Passed Candidates.",
+                        isNew: true,
+                        date: "02/02/2024",
+                        download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Important-Notices_Preperatory-CET-2024.pdf"
+                    },
+                    {
+                        id: 2,
+                        course: "All CET's",
+                        subject: "User Manual Video for CET Registration A.Y. 2024-25",
+                        isNew: true,
+                        date: "31/01/2024",
+                        download: "https://www.youtube.com/watch?v=UuJSWbIoyGQ"
+                    },
+                    {
+                        id: 3,
+                        course: "MAH- AAC (Fine Art)",
+                        subject: "MAH- AAC (Fine Art) CET 2024 Online Application Notice No.1 (English/Marathi)",
+                        isNew: true,
+                        date: "30/01/2024",
+                        download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Online-Application-Notice.pdf"
+                    },
+                    {
+                        id: 4,
+                        course: "All CET's",
+                        subject: "Imp Notice: Dates have been Extended for various courses of CET registration for A.Y 2024-25 (English/Marathi)",
+                        isNew: true,
+                        date: "29/01/2024",
+                        download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Extenstion-Notice.pdf"
+                    }
+                ])
+        }
     }
 })
 
@@ -571,40 +748,8 @@ const tableBody = document.createElement("tbody")
 
 
 const tableHeadData = [{ title: "SN", width: 20 }, { title: "Course Name", width: 200 }, { title: "Subject", width: 500 }, { title: "Published Date", width: 150 }, { title: "Download", width: 50 }]
-let tableData = [
-    {
-        id: 1,
-        course: "LLB 3 Yrs",
-        subject: "Important Notice for Preparatory Passed Candidates.",
-        isNew: true,
-        date: "02/02/2024",
-        download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Important-Notices_Preperatory-CET-2024.pdf"
-    },
-    {
-        id: 2,
-        course: "All CET's",
-        subject: "User Manual Video for CET Registration A.Y. 2024-25",
-        isNew: true,
-        date: "31/01/2024",
-        download: "https://www.youtube.com/watch?v=UuJSWbIoyGQ"
-    },
-    {
-        id: 3,
-        course: "MAH- AAC (Fine Art)",
-        subject: "MAH- AAC (Fine Art) CET 2024 Online Application Notice No.1 (English/Marathi)",
-        isNew: true,
-        date: "30/01/2024",
-        download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Online-Application-Notice.pdf"
-    },
-    {
-        id: 4,
-        course: "All CET's",
-        subject: "Imp Notice: Dates have been Extended for various courses of CET registration for A.Y 2024-25 (English/Marathi)",
-        isNew: true,
-        date: "29/01/2024",
-        download: "https://cetcell.mahacet.org/wp-content/uploads/2023/12/Extenstion-Notice.pdf"
-    }
-]
+
+
 
 tableHeadData.forEach(function (th) {
     const tableHeadTrTh = document.createElement("th")
@@ -618,35 +763,7 @@ tableHeadData.forEach(function (th) {
     tableHeadTr.appendChild(tableHeadTrTh)
 })
 
-//
-tableData.forEach(function (ele) {
-    const tableBodyTr = document.createElement("tr")
-    const tableBodyTrData1 = document.createElement("td")
-    tableBodyTrData1.innerText = ele.id
-    tableBodyTrData1.style.textAlign = "center"
-    const tableBodyTrData2 = document.createElement("td")
-    tableBodyTrData2.innerText = ele.course
-    const tableBodyTrData3 = document.createElement("td")
-    tableBodyTrData3.innerText = ele.subject
-    //create new img
-    const newImg = document.createElement("img")
-    newImg.src = "../img/blinknew.gif"
-    newImg.alt = "new"
-    tableBodyTrData3.appendChild(newImg)
-    const tableBodyTrData4 = document.createElement("td")
-    tableBodyTrData4.innerText = ele.date
-    const tableBodyTrData5 = document.createElement("td")
-    tableBodyTrData5.style.textAlign = "center"
-    tableBodyTrData5.style.cursor = "pointer"
-    const openLink = `<a href="${ele.download}" target="_blank"><i class="fa fa-file-pdf-o fw-bold" aria-hidden="true"></i></a>`
-    tableBodyTrData5.innerHTML = openLink
-    tableBodyTr.appendChild(tableBodyTrData1)
-    tableBodyTr.appendChild(tableBodyTrData2)
-    tableBodyTr.appendChild(tableBodyTrData3)
-    tableBodyTr.appendChild(tableBodyTrData4)
-    tableBodyTr.appendChild(tableBodyTrData5)
-    tableBody.appendChild(tableBodyTr)
-})
+
 
 table.appendChild(tableHead)
 table.appendChild(tableBody)

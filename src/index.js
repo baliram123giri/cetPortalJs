@@ -591,7 +591,9 @@ function dynamicData(tableAllData = []) {
         const newImg = document.createElement("img")
         newImg.src = "../img/blinknew.gif"
         newImg.alt = "new"
-        tableBodyTrData3.appendChild(newImg)
+        if (ele.isNew) {
+            tableBodyTrData3.appendChild(newImg)
+        }
         const tableBodyTrData4 = document.createElement("td")
         tableBodyTrData4.innerText = ele.date
         const tableBodyTrData5 = document.createElement("td")
@@ -602,6 +604,7 @@ function dynamicData(tableAllData = []) {
         tableBodyTr.appendChild(tableBodyTrData1)
         tableBodyTr.appendChild(tableBodyTrData2)
         tableBodyTr.appendChild(tableBodyTrData3)
+
         tableBodyTr.appendChild(tableBodyTrData4)
         tableBodyTr.appendChild(tableBodyTrData5)
         tableBody.appendChild(tableBodyTr)

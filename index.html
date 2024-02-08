@@ -6,6 +6,64 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <script src="./src/jquery-3.7.1.min.js"></script>
     <script src="/src/index.js"></script>
+    <script>
+      //Gallary Section
+      const gallary = document.createElement("section");
+      gallary.style.height = "500px";
+      gallary.style.background = "#163269";
+      $("main").append(gallary);
+      //adding the class
+      $(gallary).addClass("p-5");
+
+      const gallaryContainer = document.createElement("div");
+      gallaryContainer.className =
+        "container border border-warning h-100 position-relative";
+
+      const GallaryTitle = document.createElement("h4");
+      $(GallaryTitle).text("Gallery");
+      GallaryTitle.style.background = "#163269";
+      GallaryTitle.style.top="-15px"
+      GallaryTitle.className = "text-white";
+      $(gallaryContainer)
+        .html(`<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="row ">
+          <div class="col-12 col-lg-4 ms-auto p-5">
+            <img src="./img/slide1.jpg" class="d-block w-100" alt="...">
+            </div>
+          <div class="col-12 col-lg-4 p-5 me-auto">
+            <img src="./img/slide2.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+    <div class="carousel-item">
+      <div class="row ">
+          <div class="col-12 col-lg-4 ms-auto p-5">
+            <img src="./img/slide3.jpg" class="d-block w-100" alt="...">
+            </div>
+          <div class="col-12 col-lg-4 p-5 me-auto">
+            <img src="./img/slide4.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>`);
+      $(gallaryContainer).append(GallaryTitle);
+      $(GallaryTitle).addClass("position-absolute");
+
+      $(gallary).append(gallaryContainer);
+    </script>
   </body>
 </html>

@@ -1,3 +1,4 @@
+
 //adding title to document
 document.title = "State Common Entrance Test Cell | Government of Maharashtra"
 
@@ -454,7 +455,7 @@ aboutSection.style.background = "url(../img/aboutBg.jpg)"
 aboutSection.style.backgroundPosition = "center 0px"
 aboutSection.style.backgroundSize = "cover"
 aboutSection.style.backgroundRepeat = "no-repeat"
-aboutSection.style.height = "1500px"
+
 aboutSection.style.backgroundAttachment = "fixed"
 
 //create a child as abbout section overlay
@@ -517,7 +518,7 @@ main.appendChild(aboutSection)
 //table section
 const tableSection = document.createElement("div")
 tableSection.style.background = "#EAEAEA"
-tableSection.style.height = "400px"
+
 
 //create menu container
 const menuContainer = document.createElement("div")
@@ -773,10 +774,14 @@ table.appendChild(tableBody)
 tableHead.appendChild(tableHeadTr)
 
 menuContainer.appendChild(table)
+
+
 ///last 
 const bundleScript = document.createElement("script")
 bundleScript.src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 bundleScript.integrity = "sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 bundleScript.crossOrigin = "anonymous"
 
+const jquery =  document.createElement("script")
 document.body.appendChild(bundleScript)
+
